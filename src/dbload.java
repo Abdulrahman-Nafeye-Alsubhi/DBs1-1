@@ -1,5 +1,11 @@
 
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 
 
@@ -17,7 +23,7 @@ public class dbload {
         }
     }
 
-    private static void buildHeapFile(File inFile, File outFile, int pagesize) {
+    private static void buildHeapFile(File inFile, File outFile, int pagesize) throws FileNotFoundException {
         long s_Time = System.currentTimeMillis();
         int rec_size = 0;
         int[] field_size = { 4, 24, 24, 16, 10, 40, 20, 4, 32, 32, 32, 4, 8 };
@@ -26,5 +32,18 @@ public class dbload {
         }
 
         int rec_num = (pagesize * 8) /  (rec_size * 8 + 1); 
+        BufferedReader in_txt = new BufferedReader(new FileReader(inFile));
+        FileOutputStream out_txt = new FileOutputStream(outFile);
+
+        char buf[] = new char[1024];
+
+        int ind = 0;
+        int rec_pg = 0;
+        int page = 0;
+        int field_ind = 0;
+        int total_rec = 0;
+
+        ByteArrayOutputStream pBAOS = new ByteArrayOutputStream(pagesize);
+        DataOutputStream pStream = new DataOutputStream(pBAOS);
     }
 }

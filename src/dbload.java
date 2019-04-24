@@ -17,7 +17,14 @@ public class dbload {
         }
     }
 
-    private static void buildHeapFile(File source_File, File target_File, int parseInt) {
-        
+    private static void buildHeapFile(File inFile, File outFile, int pagesize) {
+        long s_Time = System.currentTimeMillis();
+        int rec_size = 0;
+        int[] field_size = { 4, 24, 24, 16, 10, 40, 20, 4, 32, 32, 32, 4, 8 };
+        for(int i = 0; i < field_size.length; i++){
+            rec_size += field_size[i];
+        }
+
+        int rec_num = (pagesize * 8) /  (rec_size * 8 + 1); 
     }
 }

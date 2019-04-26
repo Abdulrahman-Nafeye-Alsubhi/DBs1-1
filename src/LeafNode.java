@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Ashley
- */
-class LeafNode {
+class LeafNode extends Node {
 
-    public LeafNode(int degree, String val, Object object, Object object0) {
+    LeafNode(int degree, String val, Object object, Object object0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

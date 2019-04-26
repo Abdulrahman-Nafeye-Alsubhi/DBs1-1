@@ -42,6 +42,9 @@ public class dbload {
         int page = 0;
         int field_ind = 0;
         int total_rec = 0;
+        
+        BTree T = new BTree (3); //b+ tree class
+        String index_key = "";  //key of b+ tree
 
         ByteArrayOutputStream pBAOS = new ByteArrayOutputStream(pagesize);
         DataOutputStream pStream = new DataOutputStream(pBAOS);
@@ -63,6 +66,8 @@ public class dbload {
                 pStream.flush();
                 pBAOS.writeTo(out_txt);
                 pBAOS.reset();
+                T.insert(index_key);
+                index_key = "";
             } else
                 start = false;
             if (c == ',' || c == '\n' || c == '\r') {

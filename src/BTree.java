@@ -14,4 +14,8 @@ public class BTree {
         degree = d;
         root = null;
     }
+
+    void insert(String index_key) {
+        
+    }
 }

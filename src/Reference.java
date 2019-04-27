@@ -21,12 +21,18 @@ class Reference {
             match = m;
     }
 
-    boolean getMatch() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    Node getNode() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    /**
+    Returns the Node which this reference refers to. 
+    @return A node object this reference refers to.
+      */
+     public Node getNode () {return node;}
+     
+     /**
+    Returns the match value of this reference. The match field is used only for returning a search result
+    If the key value this reference refers to matches the search 
+    value, match is set to true, otherwise it is set to false.
+    @return the match value
+      */
+     public boolean getMatch () {return match;}
     
 }

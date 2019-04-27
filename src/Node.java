@@ -46,20 +46,16 @@ public abstract class Node {
         myname = BTree.nextNodeName();
     }
 
-    Reference search(String val) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public abstract Reference search (String val);
 
-    Node getParent() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    /**
+    Get the parent reference of current node
+    @return a reference which refers to the parend node, or null if this node is the root
+      */
+     public Reference getParent () {
+             return parentref;
+     }
 
-    void insert(String val, Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    Node getNode() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public abstract void insert (String val, Node ptr);
     
 }

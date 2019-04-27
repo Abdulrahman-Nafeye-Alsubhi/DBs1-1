@@ -13,4 +13,14 @@ class LeafNode extends Node {
              keys [1] = k;
              lastindex = 1;
      }
+
+    @Override
+    public Reference search(String val) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void insert(String val, Node ptr) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

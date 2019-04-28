@@ -19,8 +19,51 @@ class LeafNode extends Node {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void insert(String val, Node ptr) {
+     /**
+    Insert val into this, creating split
+    and recursive insert into parent if necessary
+    Note that ptr is ignored.
+    @param val the value to insert
+    @param ptr (not used now, use null when calling this method)
+      */
+     public void insert (String val, Node ptr){
+
+        int toIndex = findKeyIndex(val);
+
+        // if leafnode not full then just insert the key
+        if (!full()) {
+                insertSimple(val,null,toIndex);
+                return;
+        }
+        // otherwise make a new right sibling for the current node, redistribute.
+        Node ns = null;
+        if (toIndex>lastindex) {
+                ns = new LeafNode(degree, val, this.next,(Node) this);
+        } else {
+                ns = new LeafNode(degree, keys[lastindex], this.next,(Node) this);
+                lastindex--;
+                insertSimple(val,null,toIndex);
+        }
+
+        String toParent = redistribute();	
+        //insert into parent
+        if (this.parentref!=null) this.getParent().getNode().insert(toParent, ns);
+        else new InternalNode(degree,this,toParent,ns,null,null); 
+    }
+
+    private int findKeyIndex(String val) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private boolean full() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void insertSimple(String val, Object object, int toIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private String redistribute() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -51,8 +51,13 @@ class LeafNode extends Node {
         else new InternalNode(degree,this,toParent,ns,null,null); 
     }
 
-    private int findKeyIndex(String val) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int findKeyIndex (String val){
+            int i = 1;
+            while (i<=lastindex) {
+                    if (val.split("_")[0].compareTo(keys[i-1].split("_")[0])>0 && val.split("_")[0].compareTo(keys[i].split("_")[0])<=0) break;	
+                    i++;
+            }
+            return i;
     }
 
     private boolean full() {

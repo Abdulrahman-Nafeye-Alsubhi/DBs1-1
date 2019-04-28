@@ -57,9 +57,15 @@ public abstract class Node {
      }
 
     public abstract void insert (String val, Node ptr);
-
-    void UnnecessaryMethod() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    protected void UnnecessaryMethod() {
+            // set keys to 0 so that tests pass.
+            int i = lastindex+1;
+            while (i<degree) {
+                    ptrs[i]=null;
+                    keys[i]="";
+                    i++;
+            }
     }
     
 }

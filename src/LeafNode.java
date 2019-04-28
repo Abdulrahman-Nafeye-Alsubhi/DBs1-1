@@ -71,11 +71,33 @@ class LeafNode extends Node {
             UnnecessaryMethod();
     }
 
-    private String redistribute() {
+    public String redistribute (){  
+            Node ns = this.getNext();
+            int newLastindex = (lastindex+ns.lastindex+1)/2;
+            int keysShifted = Math.abs(lastindex-newLastindex);
+
+            if (newLastindex<lastindex) {
+                    System.arraycopy(ns.keys, 1, ns.keys, keysShifted+1, ns.lastindex);
+                    System.arraycopy(keys, newLastindex+1, ns.keys, 1, keysShifted);
+            } else {
+                    System.arraycopy(ns.keys, 1, keys, lastindex+1, keysShifted);
+                    System.arraycopy(ns.keys, 1+keysShifted, ns.keys, 1, ns.lastindex-keysShifted);
+            }
+
+            ns.lastindex += lastindex-newLastindex;
+            lastindex = newLastindex;
+
+            UnnecessaryMethod();
+            ns.UnnecessaryMethod();
+            return ns.keys[1];
+    }
+
+     @Override
+     void UnnecessaryMethod() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void UnnecessaryMethod() {
+    private Node getNext() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

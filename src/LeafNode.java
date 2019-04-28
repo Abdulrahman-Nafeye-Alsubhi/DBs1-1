@@ -14,9 +14,22 @@ class LeafNode extends Node {
              lastindex = 1;
      }
 
-    @Override
-    public Reference search(String val) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Reference search (String val){
+            int loc = this.findKeyIndex(val.split("_")[0]);
+            boolean foundYa = false;
+            if (loc>lastindex) {
+                    foundYa = keys[loc-1].contains(val.split("_")[0]);
+                    loc=lastindex;
+                    if(foundYa){
+                        keys[loc-1] +="_" + val.split("_")[1];
+                    }
+            } else {
+                    foundYa = keys[loc].contains(val.split("_")[0]);
+                    if(foundYa){
+                        keys[loc] +="_" + val.split("_")[1];
+                    }
+            }
+            return new Reference(this, loc, foundYa);
     }
 
      /**

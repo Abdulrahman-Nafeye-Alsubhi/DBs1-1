@@ -60,15 +60,22 @@ class LeafNode extends Node {
             return i;
     }
 
-    private boolean full() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean full () {
+            return lastindex == degree - 1;
     }
 
-    private void insertSimple(String val, Object object, int toIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void insertSimple (String val, Node ptr, int i){
+            System.arraycopy(keys, i, keys, i+1, lastindex+1-i);
+            keys[i] = val;
+            lastindex++;
+            UnnecessaryMethod();
     }
 
     private String redistribute() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void UnnecessaryMethod() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

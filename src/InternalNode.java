@@ -1,5 +1,5 @@
 
-class InternalNode {
+public class InternalNode extends Node{
 
     /**
     Construct an InternalNode object and initialize it with the parameters.
@@ -21,5 +21,15 @@ class InternalNode {
              if (p0 != null) p0.setParent (new Reference (this, 0, false));
              if (p1 != null) p1.setParent (new Reference (this, 1, false));
      }
+
+    @Override
+    public Reference search(String val) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void insert(String val, Node ptr) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

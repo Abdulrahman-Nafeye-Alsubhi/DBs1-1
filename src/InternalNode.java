@@ -27,8 +27,50 @@ public class InternalNode extends Node{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void insert(String val, Node ptr) {
+     /**
+    Insert (val, ptr) into this node. Uses insertSimple, redistribute etc.
+    Insert into parent recursively if necessary
+    @param val the value to insert
+    @param ptr the pointer to insert 
+      */
+     public void insert (String val, Node ptr) {
+
+             int toIndex = findKeyIndex(val);
+
+             // if not full then just insert the key
+             if (!full()) {
+                     insertSimple(val,ptr,toIndex);
+                     return;
+             }
+             // otherwise make a new right sibling for the current node, redistribute.
+             Node ns = null;
+             if (toIndex>lastindex) {
+                     ns = new InternalNode(degree,null,val,ptr,next,(Node) this);
+             } else {
+                     ns = new InternalNode(degree, null,keys[lastindex], ptrs[lastindex], next,(Node) this);	
+                     lastindex--;
+                     insertSimple(val,ptr,toIndex);
+             }
+
+             String toParent = redistribute();
+             // recursively insert into parent if exists
+             if (getParent()!=null) parentref.getNode().insert(toParent, ns);				
+             else new InternalNode(degree,this,toParent,ns,null,null);
+     }
+
+    private int findKeyIndex(String val) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private boolean full() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void insertSimple(String val, Node ptr, int toIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private String redistribute() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

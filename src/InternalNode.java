@@ -58,11 +58,22 @@ public class InternalNode extends Node{
              else new InternalNode(degree,this,toParent,ns,null,null);
      }
 
-    private void insertSimple(String val, Node ptr, int toIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void insertSimple (String val, Node ptr, int i) {
+		
+            System.arraycopy(keys, i, keys, i+1, lastindex+1-i);
+            System.arraycopy(ptrs, i, ptrs, i+1, lastindex+1-i);
+            keys[i]=val;
+            ptrs[i]=ptr;
+            lastindex++;
+            readopt();
+            UnnecessaryMethod();
     }
 
     private String redistribute() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void readopt() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

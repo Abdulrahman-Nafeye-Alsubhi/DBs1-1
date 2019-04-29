@@ -26,7 +26,7 @@ public class InternalNode extends Node{
     public Reference search(String val) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
      /**
     Insert (val, ptr) into this node. Uses insertSimple, redistribute etc.
     Insert into parent recursively if necessary
@@ -57,14 +57,6 @@ public class InternalNode extends Node{
              if (getParent()!=null) parentref.getNode().insert(toParent, ns);				
              else new InternalNode(degree,this,toParent,ns,null,null);
      }
-
-    private int findKeyIndex(String val) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private boolean full() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     private void insertSimple(String val, Node ptr, int toIndex) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -69,8 +69,39 @@ public class InternalNode extends Node{
             UnnecessaryMethod();
     }
 
-    private String redistribute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String redistribute () {
+            InternalNode ns = (InternalNode) this.getNext();
+            int newLastindex = (lastindex+ns.lastindex)/2;
+            int keysShifted = Math.abs(lastindex-newLastindex);
+
+            if (newLastindex<lastindex) { 
+                    //redistribute keys
+                    System.arraycopy(ns.keys, 1, ns.keys, keysShifted, ns.lastindex);
+                    System.arraycopy(keys, newLastindex+1, ns.keys, 0, keysShifted);
+                    //redistribute pointers
+                    System.arraycopy(ns.ptrs, 0, ns.ptrs, keysShifted-1, ns.lastindex+1);
+                    System.arraycopy(ptrs, newLastindex+1, ns.ptrs, 0, keysShifted);
+            } else {
+                    //redistribute keys
+                    System.arraycopy(ns.keys, 1, keys, lastindex+1, keysShifted);
+                    System.arraycopy(ns.keys, keysShifted+1, ns.keys, 0, ns.lastindex-keysShifted);
+                    //redistribute pointers
+                    System.arraycopy(ns.ptrs, 0, ptrs, lastindex, keysShifted+1);
+                    System.arraycopy(ns.ptrs, keysShifted+1, ns.ptrs, 0, ns.lastindex-keysShifted);
+            }
+
+            ns.lastindex += lastindex-newLastindex-1;
+            this.lastindex = newLastindex;		
+
+            String toParent = ns.keys[0];
+            ns.keys[0]="";
+
+            readopt();
+            ns.readopt();
+
+            UnnecessaryMethod();
+            ns.UnnecessaryMethod();
+            return toParent;
     }
 
     private void readopt() {

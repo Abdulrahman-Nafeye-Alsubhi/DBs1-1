@@ -81,9 +81,11 @@ public abstract class Node {
             return lastindex == degree - 1;
     }
     
-    void setParent(Reference reference) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     /**
+    Set the parent reference of current node
+    @param l the parent reference
+      */
+     public void setParent (Reference l) {parentref = l;}
     
     public Node getNext () {
             return next;

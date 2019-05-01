@@ -104,8 +104,10 @@ public class InternalNode extends Node{
             return toParent;
     }
 
-    private void readopt() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected void readopt() {
+            for (int i=0;i<=this.lastindex;i++) {
+                    ptrs[i].setParent(new Reference(this,i,false));
+            }
     }
     
 }

@@ -85,4 +85,7 @@ public abstract class Node {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public Node getNext () {
+            return next;
+    }
 }

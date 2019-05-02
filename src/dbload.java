@@ -128,6 +128,10 @@ public class dbload {
 
         in_txt.close();
         out_txt.close();
+        
+        T.checkpoint ();
+        T.indexwrite (pagesize);
+        
         System.out.println("Success!!!");
         System.out.println("Total record counts : " + (total_rec - 1));
         System.out.println("Records of page : " + rec_num);

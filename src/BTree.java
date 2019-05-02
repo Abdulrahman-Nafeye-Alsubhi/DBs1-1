@@ -40,4 +40,12 @@ public class BTree {
             }
         }
     }
+
+    void checkpoint() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void indexwrite(int pagesize) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

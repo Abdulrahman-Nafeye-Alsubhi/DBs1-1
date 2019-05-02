@@ -22,10 +22,15 @@ public class InternalNode extends Node{
              if (p1 != null) p1.setParent (new Reference (this, 1, false));
      }
 
-    @Override
-    public Reference search(String val) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     /**
+    Uses findPtrInex and calls itself recursively until find the value or find the position 
+    where the value should be.
+    @return the reference pointing to a leaf node.
+      */
+     public Reference search (String val) {
+             Node nextPtr = ptrs[this.findPtrIndex(val)];
+             return nextPtr.search(val);
+     }
     
      /**
     Insert (val, ptr) into this node. Uses insertSimple, redistribute etc.
@@ -108,6 +113,10 @@ public class InternalNode extends Node{
             for (int i=0;i<=this.lastindex;i++) {
                     ptrs[i].setParent(new Reference(this,i,false));
             }
+    }
+
+    private int findPtrIndex(String val) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

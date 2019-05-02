@@ -115,8 +115,16 @@ public class InternalNode extends Node{
             }
     }
 
-    private int findPtrIndex(String val) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     public int findPtrIndex (String val){
+            int i = 0;
+
+            do {
+                    if (((val.split("_")[0]).compareTo(keys[i].split("_")[0])>=0) && (i==lastindex || val.split("_")[0].compareTo(keys[i+1].split("_")[0])<0)) break;
+
+                    i++;
+            } while (i <= lastindex);
+
+            return i; 
     }
     
 }

@@ -41,8 +41,27 @@ public class BTree {
         }
     }
 
-    void checkpoint() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void checkpoint () {
+        int pt = 0;
+        if (root == null)
+                System.out.println("EMPTY TREE");
+        else{
+            Node no = root;
+            while(no != null){
+                no.thispoint = pt;
+                pt++;
+                Node next_no = null;
+                if(no.next != null){
+                    next_no = no.next;
+                }
+                while(next_no != null ){
+                    next_no.thispoint = pt;
+                    pt++;
+                    next_no = next_no.next;
+                }
+                no = no.ptrs[0];
+            }
+        }
     }
 
     void indexwrite(int pagesize) {

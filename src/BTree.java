@@ -6,9 +6,6 @@ import java.io.PrintWriter;
 
 public class BTree {
 
-    static String nextNodeName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     Node root;
     
     int degree;
@@ -22,6 +19,10 @@ public class BTree {
     public BTree (int d) {
         degree = d;
         root = null;
+    }
+    
+    public static String nextNodeName() {
+            return "n" + String.valueOf(nodeNames++);
     }
 
     void insert(String val) {

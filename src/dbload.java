@@ -3,10 +3,10 @@ public class dbload {
     
     public static void main (String args[])
             throws IOException {
-        args = new String[3];
-        args[0] = "-p";
-        args[1] = "4096";
-        args[2] ="test.csv";
+//        args = new String[3];
+//        args[0] = "-p";
+//        args[1] = "4096";
+//        args[2] ="test.csv";
         if(args[0].equals("-p")) {
             if (args.length!=3){
                 System.err.println("Please correct parameter");
